@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(NetLibVersion);$(NetStandardLibVersion)</TargetFrameworks>
+    <RootNamespace>P99</RootNamespace>
+    <AssemblyName>P99</AssemblyName>
+
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <PackageId>p99</PackageId>
+    <Title>p99.NET</Title>
+    <Description>Low-cost generation of performance percentiles (p50, p90, p99, etc.)</Description>
+    <PackageTags>p99;percentiles;metrics;latency;performance;histogram;dotnet</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/synesissoftware/p99.NET</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/synesissoftware/p99.NET/blob/master/CHANGELOG.md</PackageReleaseNotes>
+
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+    <!-- AllowUnsafeBlocks: required for Histogram's embedded fixed bucket buffer (cache-friendly layout only). -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
